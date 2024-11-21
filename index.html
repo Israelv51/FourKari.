@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NO TE ENOJES</title>
+  <style>
+    body {
+      background-color: #32ff7e; /* Verde lima-neón */
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .image img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto 20px;
+    }
+
+    .text {
+      font-size: 24px;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+
+    .button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #0984e3; /* Azul */
+      color: white;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .button:hover {
+      background-color: #74b9ff;
+      transform: scale(1.1);
+    }
+
+    .form-container {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .form-container input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      width: 80%;
+    }
+
+    .form-container button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #00b894; /* Verde */
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="image">
+      <img src="d:\Proyectos\PK\aa.jfif" alt="GIF">
+    </div>
+    <div class="text" id="message">Kari!!!!</br> Estas enojada???</div>
+    <button class="button" onclick="showText(1)">No</button>
+    <button class="button" onclick="showText(2)">Si</button>
+
+    <div class="form-container" id="form-container">
+      <input type="text" id="whatsappMessage" placeholder="Escribe tu mensaje">
+      <button onclick="sendWhatsApp()">Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    function showText(button) {
+      const message = document.getElementById('message');
+      const formContainer = document.getElementById('form-container');
+
+      if (button === 1) {
+        message.textContent = "Aaaa Weno";
+        formContainer.style.display = 'none';
+      } else if (button === 2) {
+        message.textContent = ":v Te pido perdon, quieres hablar de esto?";
+        formContainer.style.display = 'block';
+      }
+    }
+
+    function sendWhatsApp() {
+      const message = document.getElementById('whatsappMessage').value;
+      if (message.trim() !== '') {
+        const phoneNumber = '6684631214'; // Cambia esto por el número de WhatsApp (formato internacional sin +)
+        const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+      } else {
+        alert('Por favor, escribe un mensaje antes de enviarlo.');
+      }
+    }
+  </script>
+</body>
+</html>
